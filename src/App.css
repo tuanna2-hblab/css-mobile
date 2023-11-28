@@ -5,7 +5,7 @@
 }
 
 .box {
-  height: 20vh;
+  height: 20dvh;
   display: flex;
   justify-content: center;
   align-items: center;
