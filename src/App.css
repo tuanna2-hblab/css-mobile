@@ -55,3 +55,7 @@
   vertical-align: middle;
   white-space: nowrap;
 }
+
+.img {
+  width: 100%;
+}

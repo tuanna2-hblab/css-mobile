@@ -16,7 +16,7 @@ function App() {
   ) : (
     <div className="over-height">
       <p>Not all browsers support dvh</p>
-      <img src={dvhImg} width="1500" />
+      <img src={dvhImg} className="img" />
       <button className="btn" onClick={() => setIsChangePage(true)}>
         Next Page
       </button>
