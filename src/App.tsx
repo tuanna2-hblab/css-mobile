@@ -4,12 +4,24 @@ import "./App.css";
 
 function App() {
   const [isChangePage, setIsChangePage] = React.useState<boolean>(false);
+  const [vh, setVh] = React.useState<number>(() => window.innerHeight * 0.01);
+
+  React.useEffect(() => {
+    const handleResizeWindowInnerHeight = () => {
+      setVh(window.innerHeight * 0.01);
+    };
+    window.addEventListener("resize", handleResizeWindowInnerHeight);
+
+    return () => {
+      window.removeEventListener("resize", handleResizeWindowInnerHeight);
+    };
+  }, []);
 
   return isChangePage ? (
     <div
       style={
         {
-          "--vh": `${window.innerHeight * 0.01}px`,
+          "--vh": `${vh}px`,
         } as React.CSSProperties
       }
       className="container"
