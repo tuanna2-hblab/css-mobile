@@ -1,6 +1,7 @@
 import React from "react";
 import dvhImg from "./assets/dvh.png";
 import "./App.css";
+import { debounce } from "lodash";
 
 function App() {
   const [isChangePage, setIsChangePage] = React.useState<boolean>(false);
@@ -10,10 +11,18 @@ function App() {
     const handleResizeWindowInnerHeight = () => {
       setVh(window.innerHeight * 0.01);
     };
-    window.addEventListener("resize", handleResizeWindowInnerHeight);
+    const debounceHandleResizeWindowInnerHeight = debounce(
+      handleResizeWindowInnerHeight,
+      200
+    );
+
+    window.addEventListener("resize", debounceHandleResizeWindowInnerHeight);
 
     return () => {
-      window.removeEventListener("resize", handleResizeWindowInnerHeight);
+      window.removeEventListener(
+        "resize",
+        debounceHandleResizeWindowInnerHeight
+      );
     };
   }, []);
 
